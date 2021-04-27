@@ -1,13 +1,22 @@
-let canvas = document.getElementById('canvas');
-let context = canvas.getContext('2d');
+let canvas = document.getElementById("canvas");
+let context = canvas.getContext("2d");
 
 let image = new Image();
-let imagePath = 'resources/images/parrot.jpg';
+let imagePath = "resources/images/parrot.jpg";
 image.src = imagePath;
 
 image.onload = function () {
     context.drawImage(image, 0, 0); //TODO: input context.drawImage(img,x,y,width,height);
 };
+
+let select = document.getElementById("select-filters");
+select.addEventListener("change", filters);
+
+function filters() {
+    console.log(select.value);
+    //TODO
+}
+
 
 function original() {
     context.drawImage(image, 0, 0);
@@ -15,11 +24,11 @@ function original() {
 
 function invert() {
     //original()
-    context.drawImage(img, 0, 0);
+    context.drawImage(image, 0, 0);
 
     //get data
     let imgData = context.getImageData(0, 0, canvas.width, canvas.height);
-    let data = imageData.data;
+    let data = imgData.data;
 
     for (let i = 0; i < data.length; i = i + 4) {
         let red = data[i];
