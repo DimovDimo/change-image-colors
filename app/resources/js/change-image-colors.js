@@ -9,12 +9,14 @@ image.onload = function () {
     context.drawImage(image, 0, 0); //TODO: input context.drawImage(img,x,y,width,height);
 };
 
-let select = document.getElementById("select-filters");
-select.addEventListener("change", filters);
+let filters = document.getElementById("select-filters");
+filters.addEventListener("change", selectFilters);
 
-function filters() {
-    console.log(select.value);
-    //TODO
+function selectFilters() {
+    switch (filters.value) {
+        case "invert": invert(); break;
+        default: original();
+    }
 }
 
 
