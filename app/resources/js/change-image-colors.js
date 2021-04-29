@@ -1,7 +1,10 @@
+const maxColor = 255;
+
 let canvas = document.getElementById("canvas");
 let context = canvas.getContext("2d");
 
 let image = new Image();
+image.crossOrigin = "anonymous";
 let imagePath = "resources/images/parrot.jpg";
 image.src = imagePath;
 
@@ -19,7 +22,6 @@ function selectFilters() {
     }
 }
 
-
 function original() {
     context.drawImage(image, 0, 0);
 }
@@ -31,17 +33,16 @@ function invert() {
     //get data
     let imgData = context.getImageData(0, 0, canvas.width, canvas.height);
     let data = imgData.data;
-
     for (let i = 0; i < data.length; i = i + 4) {
         let red = data[i];
         let green = data[i + 1];
         let blue = data[i + 2];
 
-        red = 255 - red;
-        green = 255 - green;
-        blue = 255 - blue;
+        /* red */   data[i]     = maxColor - red;
+        /* green */ data[i + 1] = maxColor - green;
+        /* blue */  data[i + 2] = maxColor - blue;
     }
-
+    
     //put data
     context.putImageData(imgData, 0, 0);
 }
