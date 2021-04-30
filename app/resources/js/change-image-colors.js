@@ -17,7 +17,7 @@ filters.addEventListener("change", selectFilters);
 
 function selectFilters() {
     switch (filters.value) {
-        case "invert": invert(); break;
+        case "invert": change(invert); break;
         default: original();
     }
 }
@@ -26,23 +26,39 @@ function original() {
     context.drawImage(image, 0, 0);
 }
 
-function invert() {
-    //original()
-    context.drawImage(image, 0, 0);
+function change(filter) {
+    original();
 
-    //get data
-    let imgData = context.getImageData(0, 0, canvas.width, canvas.height);
-    let data = imgData.data;
-    for (let i = 0; i < data.length; i = i + 4) {
-        let red = data[i];
-        let green = data[i + 1];
-        let blue = data[i + 2];
+    let imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+    let data = imageData.data;
 
-        /* red */   data[i]     = maxColor - red;
-        /* green */ data[i + 1] = maxColor - green;
-        /* blue */  data[i + 2] = maxColor - blue;
+    for (let color = 0; color < data.length; color = color + 4) {
+        let { red, green, blue } = getColors(data, color);
+        ({ red, green, blue } = filter(red, green, blue));
+        setColors(data, color, red, green, blue);
     }
+
+    context.putImageData(imageData, 0, 0);
+}
+
+function getColors(data, color) {
+    let red = data[color];
+    let green = data[color + 1];
+    let blue = data[color + 2];
+
+    return { red, green, blue };
+}
+
+function setColors(data, color, red, green, blue) {
+    data[color] = red;
+    data[color + 1] = green;
+    data[color + 2] = blue;
+}
+
+function invert(red, green, blue) {
+    red = maxColor - red;
+    green = maxColor - green;
+    blue = maxColor - blue;
     
-    //put data
-    context.putImageData(imgData, 0, 0);
+    return { red, green, blue };
 }
