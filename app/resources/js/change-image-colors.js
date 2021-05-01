@@ -18,6 +18,7 @@ filters.addEventListener("change", selectFilters);
 function selectFilters() {
     switch (filters.value) {
         case "invert": change(invert); break;
+        case "sepia": change(sepia); break;
         default: original();
     }
 }
@@ -27,7 +28,7 @@ function original() {
 }
 
 function change(filter) {
-    original();
+    original(); //TODO: Current image
 
     let imageData = context.getImageData(0, 0, canvas.width, canvas.height);
     let data = imageData.data;
@@ -59,6 +60,15 @@ function invert(red, green, blue) {
     red = maxColor - red;
     green = maxColor - green;
     blue = maxColor - blue;
-    
+
+    return { red, green, blue };
+}
+
+function sepia(red, green, blue) {
+    //TODO: input colors multipliers
+    red = Math.min(Math.round(0.3 * red + 0.7 * green + 0.2 * blue), maxColor);
+    green = Math.min(Math.round(0.3 * red + 0.5 * green + 0.2 * blue), maxColor);
+    blue = Math.min(Math.round(0.3 * red + 0.5 * green + 0.1 * blue), maxColor);
+
     return { red, green, blue };
 }
