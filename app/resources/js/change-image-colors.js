@@ -1,4 +1,4 @@
-const maxColor = 255;
+const maxColor = 255; //TODO: input color
 
 let canvas = document.getElementById("canvas");
 let context = canvas.getContext("2d");
@@ -19,6 +19,10 @@ function selectFilters() {
     switch (filters.value) {
         case "invert": change(invert); break;
         case "sepia": change(sepia); break;
+        case "grayscaleAverage": change(grayscaleAverage); break;
+        case "grayscaleMax": change(grayscaleMax); break;
+        case "grayscaleMedium": change(grayscaleMedium); break;
+        case "grayscaleMin": change(grayscaleMin); break;
         default: original();
     }
 }
@@ -69,6 +73,46 @@ function sepia(red, green, blue) {
     red = Math.min(Math.round(0.3 * red + 0.7 * green + 0.2 * blue), maxColor);
     green = Math.min(Math.round(0.3 * red + 0.5 * green + 0.2 * blue), maxColor);
     blue = Math.min(Math.round(0.3 * red + 0.5 * green + 0.1 * blue), maxColor);
+
+    return { red, green, blue };
+}
+
+function grayscaleAverage(red, green, blue) {
+    let average = (red + green + blue) / 3;
+    
+    red = average;
+    green = average;
+    blue = average;
+
+    return { red, green, blue };
+}
+
+function grayscaleMax(red, green, blue) {
+    let max = Math.max(red, green, blue);
+    
+    red = max;
+    green = max;
+    blue = max;
+
+    return { red, green, blue };
+}
+
+function grayscaleMedium(red, green, blue) {
+    let medium = [red, green, blue].sort()[1];
+    
+    red = medium;
+    green = medium;
+    blue = medium;
+
+    return { red, green, blue };
+}
+
+function grayscaleMin(red, green, blue) {
+    let min = Math.min(red, green, blue);
+    
+    red = min;
+    green = min;
+    blue = min;
 
     return { red, green, blue };
 }
