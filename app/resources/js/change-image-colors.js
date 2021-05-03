@@ -17,12 +17,21 @@ filters.addEventListener("change", selectFilters);
 
 function selectFilters() {
     switch (filters.value) {
-        case "invert": change(invert); break;
+        case "invert": change(invert); break; // TODO: invert => negative ?
         case "sepia": change(sepia); break;
         case "grayscaleAverage": change(grayscaleAverage); break;
         case "grayscaleMax": change(grayscaleMax); break;
         case "grayscaleMedium": change(grayscaleMedium); break;
         case "grayscaleMin": change(grayscaleMin); break;
+        case "grayscaleRed": change(grayscaleRed); break;
+        case "grayscaleGreen": change(grayscaleGreen); break;
+        case "grayscaleBlue": change(grayscaleBlue); break;
+        case "onlyRed": change(onlyRed); break;
+        case "onlyGreen": change(onlyGreen); break;
+        case "onlyBlue": change(onlyBlue); break;
+        case "withoutRed": change(withoutRed); break;
+        case "withoutGreen": change(withoutGreen); break;
+        case "withoutBlue": change(withoutBlue); break;
         default: original();
     }
 }
@@ -113,6 +122,78 @@ function grayscaleMin(red, green, blue) {
     red = min;
     green = min;
     blue = min;
+
+    return { red, green, blue };
+}
+
+function grayscaleRed(red, green, blue) {    
+    red = red;
+    green = red;
+    blue = red;
+
+    return { red, green, blue };
+}
+
+function grayscaleGreen(red, green, blue) {
+    red = green;
+    green = green;
+    blue = green;
+
+    return { red, green, blue };
+}
+
+function grayscaleBlue(red, green, blue) {
+    red = blue;
+    green = blue;
+    blue = blue;
+
+    return { red, green, blue };
+}
+
+function onlyRed(red, green, blue) {    
+    red = red;
+    green = 0;
+    blue = 0;
+
+    return { red, green, blue };
+}
+
+function onlyGreen(red, green, blue) {
+    red = 0;
+    green = green;
+    blue = 0;
+
+    return { red, green, blue };
+}
+
+function onlyBlue(red, green, blue) {
+    red = 0;
+    green = 0;
+    blue = blue;
+
+    return { red, green, blue };
+}
+
+function withoutRed(red, green, blue) {    
+    red = 0;
+    green = green;
+    blue = blue;
+
+    return { red, green, blue };
+}
+
+function withoutGreen(red, green, blue) {
+    red = red;
+    green = 0;
+    blue = blue;
+
+    return { red, green, blue };
+}
+
+function withoutBlue(red, green, blue) {
+    red = red;
+    green = green;
+    blue = 0;
 
     return { red, green, blue };
 }
