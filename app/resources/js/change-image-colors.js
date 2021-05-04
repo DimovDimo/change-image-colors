@@ -5,7 +5,7 @@ let context = canvas.getContext("2d");
 
 let image = new Image();
 image.crossOrigin = "anonymous";
-let imagePath = "resources/images/parrot.jpg";
+let imagePath = "resources/images/flower-field-spectrum.jpg";
 image.src = imagePath;
 
 image.onload = function () {
@@ -197,3 +197,12 @@ function withoutBlue(red, green, blue) {
 
     return { red, green, blue };
 }
+
+// TODO:
+// red = red;
+// green = red;
+// blue = blue;
+//===============
+// red = green;
+// green = red;
+// blue = blue;
