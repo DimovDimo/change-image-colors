@@ -32,6 +32,12 @@ function selectFilters() {
         case "withoutRed": change(withoutRed); break;
         case "withoutGreen": change(withoutGreen); break;
         case "withoutBlue": change(withoutBlue); break;
+        case "redInGreen": change(redInGreen); break;
+        case "redInBlue": change(redInBlue); break;
+        case "greenInRed": change(greenInRed); break;
+        case "greenInBlue": change(greenInBlue); break;
+        case "blueInRed": change(blueInRed); break;
+        case "blueInGreen": change(blueInGreen); break;
         default: original();
     }
 }
@@ -198,11 +204,55 @@ function withoutBlue(red, green, blue) {
     return { red, green, blue };
 }
 
-// TODO:
-// red = red;
-// green = red;
-// blue = blue;
+function redInGreen(red, green, blue) {
+    red = red;
+    green = red;
+    blue = blue;
+
+    return { red, green, blue };
+}
+
+function redInBlue(red, green, blue) {
+    red = red;
+    green = green;
+    blue = red;
+
+    return { red, green, blue };
+}
+
+function greenInRed(red, green, blue) {
+    red = green;
+    green = green;
+    blue = blue;
+
+    return { red, green, blue };
+}
+
+function greenInBlue(red, green, blue) {
+    red = red;
+    green = green;
+    blue = green;
+
+    return { red, green, blue };
+}
+
+function blueInRed(red, green, blue) {
+    red = blue;
+    green = green;
+    blue = blue;
+
+    return { red, green, blue };
+}
+
+function blueInGreen(red, green, blue) {
+    red = red;
+    green = blue;
+    blue = blue;
+
+    return { red, green, blue };
+}
 //===============
+// TODO:
 // red = green;
 // green = red;
 // blue = blue;
