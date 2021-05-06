@@ -75,9 +75,35 @@ function setColors(data, color, red, green, blue) {
     data[color + 2] = blue;
 }
 
+// TODO: filterRed, filterGreen, filterBlue
+
 function invert(red, green, blue) {
     red = maxColor - red;
     green = maxColor - green;
+    blue = maxColor - blue;
+
+    return { red, green, blue };
+}
+
+function invertRed(red, green, blue) {
+    red = maxColor - red;
+    green = green;
+    blue = blue;
+
+    return { red, green, blue };
+}
+
+function invertGreen(red, green, blue) {
+    red = red;
+    green = maxColor - green;
+    blue = blue;
+
+    return { red, green, blue };
+}
+
+function invertBlue(red, green, blue) {
+    red = red;
+    green = green;
     blue = maxColor - blue;
 
     return { red, green, blue };
@@ -88,6 +114,14 @@ function sepia(red, green, blue) {
     red = Math.min(Math.round(0.3 * red + 0.7 * green + 0.2 * blue), maxColor);
     green = Math.min(Math.round(0.3 * red + 0.5 * green + 0.2 * blue), maxColor);
     blue = Math.min(Math.round(0.3 * red + 0.5 * green + 0.1 * blue), maxColor);
+
+    return { red, green, blue };
+}
+
+function sepiaRandom(red, green, blue) {
+    red = Math.min(Math.round(Math.random() * red + Math.random() * green + Math.random() * blue), maxColor);
+    green = Math.min(Math.round(Math.random() * red + Math.random() * green + Math.random() * blue), maxColor);
+    blue = Math.min(Math.round(Math.random() * red + Math.random() * green + Math.random() * blue), maxColor);
 
     return { red, green, blue };
 }
@@ -155,6 +189,8 @@ function grayscaleBlue(red, green, blue) {
 
     return { red, green, blue };
 }
+
+// TODO: blackAndWhite minAndMax
 
 function onlyRed(red, green, blue) {    
     red = red;
@@ -251,8 +287,59 @@ function blueInGreen(red, green, blue) {
 
     return { red, green, blue };
 }
-//===============
-// TODO:
-// red = green;
-// green = red;
-// blue = blue;
+
+function changeRedWithGreen(red, green, blue) {// TODO: change?
+    red = green;
+    green = red;
+    blue = blue;
+
+    return { red, green, blue };
+}
+
+function changeRedWithBlue(red, green, blue) {
+    red = blue;
+    green = green;
+    blue = red;
+
+    return { red, green, blue };
+}
+
+function changeGreenWithBlue(red, green, blue) {
+    red = red;
+    green = blue;
+    blue = green;
+
+    return { red, green, blue };
+}
+
+function noise(red, green, blue) {// TODO: Noise Up Down?
+    red = Math.min(Math.round(red * (2 * Math.random())), maxColor);
+    green = Math.min(Math.round(green * (2 * Math.random())), maxColor);
+    blue = Math.min(Math.round(blue * (2 * Math.random())), maxColor);
+
+    return { red, green, blue };
+}
+
+function noiseUp(red, green, blue) {
+    red = Math.min(Math.round(red * (1 + Math.random())), maxColor);
+    green = Math.min(Math.round(green * (1 + Math.random())), maxColor);
+    blue = Math.min(Math.round(blue * (1 + Math.random())), maxColor);
+
+    return { red, green, blue };
+}
+
+function noiseDown(red, green, blue) {
+    red = Math.min(Math.round(red * Math.random()), maxColor);
+    green = Math.min(Math.round(green * Math.random()), maxColor);
+    blue = Math.min(Math.round(blue * Math.random()), maxColor);
+
+    return { red, green, blue };
+}
+
+function minAndMax(red, green, blue) {// TODO: minAndMax?
+    red = Math.round(red / maxColor) * maxColor;
+    green = Math.round(green / maxColor) * maxColor;
+    blue = Math.round(blue / maxColor) * maxColor;
+
+    return { red, green, blue };
+}
