@@ -190,7 +190,80 @@ function grayscaleBlue(red, green, blue) {
     return { red, green, blue };
 }
 
-// TODO: blackAndWhite minAndMax
+// TODO: blackAndWhite > minAndMax
+function blackAndWhiteAverage(red, green, blue) {
+    let average = (red + green + blue) / 3;
+    let blackAndWhite = Math.round(average / maxColor) * maxColor;
+    
+    red = blackAndWhite;
+    green = blackAndWhite;
+    blue = blackAndWhite;
+
+    return { red, green, blue };
+}
+
+function blackAndWhiteMax(red, green, blue) {
+    let max = Math.max(red, green, blue);
+    let blackAndWhite = Math.round(max / maxColor) * maxColor;
+    
+    red = blackAndWhite;
+    green = blackAndWhite;
+    blue = blackAndWhite;
+
+    return { red, green, blue };
+}
+
+function blackAndWhiteMedium(red, green, blue) {
+    let medium = [red, green, blue].sort()[1];
+    let blackAndWhite = Math.round(medium / maxColor) * maxColor;
+    
+    red = blackAndWhite;
+    green = blackAndWhite;
+    blue = blackAndWhite;
+
+    return { red, green, blue };
+}
+
+function blackAndWhiteMin(red, green, blue) {
+    let min = Math.min(red, green, blue);
+    let blackAndWhite = Math.round(min / maxColor) * maxColor;
+    
+    red = blackAndWhite;
+    green = blackAndWhite;
+    blue = blackAndWhite;
+
+    return { red, green, blue };
+}
+
+function blackAndWhiteRed(red, green, blue) {
+    let blackAndWhite = Math.round(red / maxColor) * maxColor;
+
+    red = blackAndWhite;
+    green = blackAndWhite;
+    blue = blackAndWhite;
+
+    return { red, green, blue };
+}
+
+function blackAndWhiteGreen(red, green, blue) {
+    let blackAndWhite = Math.round(green / maxColor) * maxColor;
+
+    red = blackAndWhite;
+    green = blackAndWhite;
+    blue = blackAndWhite;
+
+    return { red, green, blue };
+}
+
+function blackAndWhiteBlue(red, green, blue) {
+    let blackAndWhite = Math.round(blue / maxColor) * maxColor;
+
+    red = blackAndWhite;
+    green = blackAndWhite;
+    blue = blackAndWhite;
+
+    return { red, green, blue };
+}
 
 function onlyRed(red, green, blue) {    
     red = red;
@@ -288,7 +361,7 @@ function blueInGreen(red, green, blue) {
     return { red, green, blue };
 }
 
-function changeRedWithGreen(red, green, blue) {// TODO: change?
+function changeRedWithGreen(red, green, blue) {
     red = green;
     green = red;
     blue = blue;
@@ -312,7 +385,7 @@ function changeGreenWithBlue(red, green, blue) {
     return { red, green, blue };
 }
 
-function noise(red, green, blue) {// TODO: Noise Up Down?
+function noise(red, green, blue) {
     red = Math.min(Math.round(red * (2 * Math.random())), maxColor);
     green = Math.min(Math.round(green * (2 * Math.random())), maxColor);
     blue = Math.min(Math.round(blue * (2 * Math.random())), maxColor);
@@ -336,7 +409,7 @@ function noiseDown(red, green, blue) {
     return { red, green, blue };
 }
 
-function minAndMax(red, green, blue) {// TODO: minAndMax?
+function minAndMax(red, green, blue) {
     red = Math.round(red / maxColor) * maxColor;
     green = Math.round(green / maxColor) * maxColor;
     blue = Math.round(blue / maxColor) * maxColor;
