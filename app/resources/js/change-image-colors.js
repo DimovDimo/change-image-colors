@@ -19,6 +19,7 @@ function selectFilters() {
     switch (filters.value) {
         case "invert": change(invert); break; // TODO: invert => negative ?
         case "sepia": change(sepia); break;
+        case "sepiaRandom": change(sepiaRandom); break;
         case "grayscaleAverage": change(grayscaleAverage); break;
         case "grayscaleMax": change(grayscaleMax); break;
         case "grayscaleMedium": change(grayscaleMedium); break;
@@ -26,6 +27,13 @@ function selectFilters() {
         case "grayscaleRed": change(grayscaleRed); break;
         case "grayscaleGreen": change(grayscaleGreen); break;
         case "grayscaleBlue": change(grayscaleBlue); break;
+        case "blackAndWhiteAverage": change(blackAndWhiteAverage); break;
+        case "blackAndWhiteMax": change(blackAndWhiteMax); break;
+        case "blackAndWhiteMedium": change(blackAndWhiteMedium); break;
+        case "blackAndWhiteMin": change(blackAndWhiteMin); break;
+        case "blackAndWhiteRed": change(blackAndWhiteRed); break;
+        case "blackAndWhiteGreen": change(blackAndWhiteGreen); break;
+        case "blackAndWhiteBlue": change(blackAndWhiteBlue); break;
         case "onlyRed": change(onlyRed); break;
         case "onlyGreen": change(onlyGreen); break;
         case "onlyBlue": change(onlyBlue); break;
@@ -38,6 +46,13 @@ function selectFilters() {
         case "greenInBlue": change(greenInBlue); break;
         case "blueInRed": change(blueInRed); break;
         case "blueInGreen": change(blueInGreen); break;
+        case "changeRedWithGreen": change(changeRedWithGreen); break;
+        case "changeRedWithBlue": change(changeRedWithBlue); break;
+        case "changeGreenWithBlue": change(changeGreenWithBlue); break;
+        case "noise": change(noise); break;
+        case "noiseUp": change(noiseUp); break;
+        case "noiseDown": change(noiseDown); break;
+        case "maximaAndMinima": change(maximaAndMinima); break;
         default: original();
     }
 }
@@ -85,29 +100,29 @@ function invert(red, green, blue) {
     return { red, green, blue };
 }
 
-function invertRed(red, green, blue) {
-    red = maxColor - red;
-    green = green;
-    blue = blue;
+// function invertRed(red, green, blue) {
+//     red = maxColor - red;
+//     green = green;
+//     blue = blue;
 
-    return { red, green, blue };
-}
+//     return { red, green, blue };
+// }
 
-function invertGreen(red, green, blue) {
-    red = red;
-    green = maxColor - green;
-    blue = blue;
+// function invertGreen(red, green, blue) {
+//     red = red;
+//     green = maxColor - green;
+//     blue = blue;
 
-    return { red, green, blue };
-}
+//     return { red, green, blue };
+// }
 
-function invertBlue(red, green, blue) {
-    red = red;
-    green = green;
-    blue = maxColor - blue;
+// function invertBlue(red, green, blue) {
+//     red = red;
+//     green = green;
+//     blue = maxColor - blue;
 
-    return { red, green, blue };
-}
+//     return { red, green, blue };
+// }
 
 function sepia(red, green, blue) {
     //TODO: input colors multipliers
@@ -409,7 +424,7 @@ function noiseDown(red, green, blue) {
     return { red, green, blue };
 }
 
-function minAndMax(red, green, blue) {
+function maximaAndMinima(red, green, blue) {
     red = Math.round(red / maxColor) * maxColor;
     green = Math.round(green / maxColor) * maxColor;
     blue = Math.round(blue / maxColor) * maxColor;
