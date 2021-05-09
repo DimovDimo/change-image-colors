@@ -53,6 +53,14 @@ function selectFilters() {
         case "noiseUp": change(noiseUp); break;
         case "noiseDown": change(noiseDown); break;
         case "maximaAndMinima": change(maximaAndMinima); break;
+        case "multiplyWithEulerConstant": change(multiplyWithEulerConstant); break;
+        case "multiplyWithNaturalLogarithmOf2": change(multiplyWithNaturalLogarithmOf2); break;
+        case "multiplyWithNaturalLogarithmOf10": change(multiplyWithNaturalLogarithmOf10); break;
+        case "multiplyWithBase2LogarithmOfEulerConstant": change(multiplyWithBase2LogarithmOfEulerConstant); break;
+        case "multiplyWithBase10LogarithmOfEulerConstant": change(multiplyWithBase10LogarithmOfEulerConstant); break;
+        case "multiplyWithPi": change(multiplyWithPi); break;
+        case "multiplyWithSquareRootOf1Over2": change(multiplyWithSquareRootOf1Over2); break;
+        case "multiplyWithSquareRootOf2": change(multiplyWithSquareRootOf2); break;
         default: original();
     }
 }
@@ -90,7 +98,7 @@ function setColors(data, color, red, green, blue) {
     data[color + 2] = blue;
 }
 
-// TODO: filterRed, filterGreen, filterBlue
+// TODO: checkbox => filterRed, filterGreen, filterBlue
 
 function invert(red, green, blue) {
     red = maxColor - red;
@@ -428,6 +436,70 @@ function maximaAndMinima(red, green, blue) {
     red = Math.round(red / maxColor) * maxColor;
     green = Math.round(green / maxColor) * maxColor;
     blue = Math.round(blue / maxColor) * maxColor;
+
+    return { red, green, blue };
+}
+
+function multiplyWithEulerConstant(red, green, blue) {
+    red = Math.round(red * Math.E) % (maxColor + 1);
+    green = Math.round(green * Math.E) % (maxColor + 1);
+    blue = Math.round(blue * Math.E) % (maxColor + 1);
+
+    return { red, green, blue };
+}
+
+function multiplyWithNaturalLogarithmOf2(red, green, blue) {
+    red = Math.round(red * Math.LN2) % (maxColor + 1);
+    green = Math.round(green * Math.LN2) % (maxColor + 1);
+    blue = Math.round(blue * Math.LN2) % (maxColor + 1);
+
+    return { red, green, blue };
+}
+
+function multiplyWithNaturalLogarithmOf10(red, green, blue) {
+    red = Math.round(red * Math.LN10) % (maxColor + 1);
+    green = Math.round(green * Math.LN10) % (maxColor + 1);
+    blue = Math.round(blue * Math.LN10) % (maxColor + 1);
+
+    return { red, green, blue };
+}
+
+function multiplyWithBase2LogarithmOfEulerConstant(red, green, blue) {
+    red = Math.round(red * Math.LOG2E) % (maxColor + 1);
+    green = Math.round(green * Math.LOG2E) % (maxColor + 1);
+    blue = Math.round(blue * Math.LOG2E) % (maxColor + 1);
+
+    return { red, green, blue };
+}
+
+function multiplyWithBase10LogarithmOfEulerConstant(red, green, blue) {
+    red = Math.round(red * Math.LOG10E) % (maxColor + 1);
+    green = Math.round(green * Math.LOG10E) % (maxColor + 1);
+    blue = Math.round(blue * Math.LOG10E) % (maxColor + 1);
+
+    return { red, green, blue };
+}
+
+function multiplyWithPi(red, green, blue) {
+    red = Math.round(red * Math.PI) % (maxColor + 1);
+    green = Math.round(green * Math.PI) % (maxColor + 1);
+    blue = Math.round(blue * Math.PI) % (maxColor + 1);
+
+    return { red, green, blue };
+}
+
+function multiplyWithSquareRootOf1Over2(red, green, blue) {
+    red = Math.round(red * Math.SQRT1_2) % (maxColor + 1);
+    green = Math.round(green * Math.SQRT1_2) % (maxColor + 1);
+    blue = Math.round(blue * Math.SQRT1_2) % (maxColor + 1);
+
+    return { red, green, blue };
+}
+
+function multiplyWithSquareRootOf2(red, green, blue) {
+    red = Math.round(red * Math.SQRT2) % (maxColor + 1);
+    green = Math.round(green * Math.SQRT2) % (maxColor + 1);
+    blue = Math.round(blue * Math.SQRT2) % (maxColor + 1);
 
     return { red, green, blue };
 }
