@@ -61,6 +61,12 @@ function selectFilters() {
         case "multiplyWithPi": change(multiplyWithPi); break;
         case "multiplyWithSquareRootOf1Over2": change(multiplyWithSquareRootOf1Over2); break;
         case "multiplyWithSquareRootOf2": change(multiplyWithSquareRootOf2); break;
+        case "multiplyWithAcos": change(multiplyWithAcos); break;
+        case "multiplyWithAcosh": change(multiplyWithAcosh); break;
+        case "multiplyWithAsin": change(multiplyWithAsin); break;
+        case "multiplyWithAsinh": change(multiplyWithAsinh); break;
+        case "multiplyWithAtan": change(multiplyWithAtan); break;
+        case "multiplyWithAtanh": change(multiplyWithAtanh); break;
         default: original();
     }
 }
@@ -500,6 +506,54 @@ function multiplyWithSquareRootOf2(red, green, blue) {
     red = Math.round(red * Math.SQRT2) % (maxColor + 1);
     green = Math.round(green * Math.SQRT2) % (maxColor + 1);
     blue = Math.round(blue * Math.SQRT2) % (maxColor + 1);
+
+    return { red, green, blue };
+}
+
+function multiplyWithAcos(red, green, blue) {
+    red = Math.round(Math.acos(red / maxColor) * maxColor) % (maxColor + 1);
+    green = Math.round(Math.acos(green / maxColor) * maxColor) % (maxColor + 1);
+    blue = Math.round(Math.acos(blue / maxColor) * maxColor) % (maxColor + 1);
+
+    return { red, green, blue };
+}
+
+function multiplyWithAcosh(red, green, blue) {
+    red = Math.round(Math.acosh(red / maxColor) * maxColor) % (maxColor + 1);
+    green = Math.round(Math.acosh(green / maxColor) * maxColor) % (maxColor + 1);
+    blue = Math.round(Math.acosh(blue / maxColor) * maxColor) % (maxColor + 1);
+
+    return { red, green, blue };
+}
+
+function multiplyWithAsin(red, green, blue) {
+    red = Math.round(Math.asin(red / maxColor) * maxColor) % (maxColor + 1);
+    green = Math.round(Math.asin(green / maxColor) * maxColor) % (maxColor + 1);
+    blue = Math.round(Math.asin(blue / maxColor) * maxColor) % (maxColor + 1);
+
+    return { red, green, blue };
+}
+
+function multiplyWithAsinh(red, green, blue) {
+    red = Math.round(Math.asinh(red / maxColor) * maxColor) % (maxColor + 1);
+    green = Math.round(Math.asinh(green / maxColor) * maxColor) % (maxColor + 1);
+    blue = Math.round(Math.asinh(blue / maxColor) * maxColor) % (maxColor + 1);
+
+    return { red, green, blue };
+}
+
+function multiplyWithAtan(red, green, blue) {
+    red = Math.round(Math.atan(red / maxColor) * maxColor) % (maxColor + 1);
+    green = Math.round(Math.atan(green / maxColor) * maxColor) % (maxColor + 1);
+    blue = Math.round(Math.atan(blue / maxColor) * maxColor) % (maxColor + 1);
+
+    return { red, green, blue };
+}
+
+function multiplyWithAtanh(red, green, blue) {
+    red = Math.round(Math.atanh(red / maxColor) * maxColor) % (maxColor + 1);
+    green = Math.round(Math.atanh(green / maxColor) * maxColor) % (maxColor + 1);
+    blue = Math.round(Math.atanh(blue / maxColor) * maxColor) % (maxColor + 1);
 
     return { red, green, blue };
 }
