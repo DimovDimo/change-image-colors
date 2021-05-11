@@ -67,6 +67,12 @@ function selectFilters() {
         case "multiplyWithAsinh": change(multiplyWithAsinh); break;
         case "multiplyWithAtan": change(multiplyWithAtan); break;
         case "multiplyWithAtanh": change(multiplyWithAtanh); break;
+        case "blackAndWhiteAtanhRedAndGreen": change(blackAndWhiteAtanhRedAndGreen); break;
+        case "blackAndWhiteAtanhRedAndBlue": change(blackAndWhiteAtanhRedAndBlue); break;
+        case "blackAndWhiteAtanhGreenAndRed": change(blackAndWhiteAtanhGreenAndRed); break;
+        case "blackAndWhiteAtanhGreenAndBlue": change(blackAndWhiteAtanhGreenAndBlue); break;
+        case "blackAndWhiteAtanhBlueAndRed": change(blackAndWhiteAtanhBlueAndRed); break;
+        case "blackAndWhiteAtanhBlueAndGreen": change(blackAndWhiteAtanhBlueAndGreen); break;
         default: original();
     }
 }
@@ -554,6 +560,67 @@ function multiplyWithAtanh(red, green, blue) {
     red = Math.round(Math.atanh(red / maxColor) * maxColor) % (maxColor + 1);
     green = Math.round(Math.atanh(green / maxColor) * maxColor) % (maxColor + 1);
     blue = Math.round(Math.atanh(blue / maxColor) * maxColor) % (maxColor + 1);
+
+    return { red, green, blue };
+}
+
+//TODO: grayscaleAtanh
+function blackAndWhiteAtanhRedAndGreen(red, green, blue) {
+    let atan2 = Math.round(Math.atan2(red, green)) * maxColor;
+
+    red = atan2;
+    green = atan2;
+    blue = atan2;
+
+    return { red, green, blue };
+}
+
+function blackAndWhiteAtanhRedAndBlue(red, green, blue) {
+    let atan2 = Math.round(Math.atan2(red, blue)) * maxColor;
+
+    red = atan2;
+    green = atan2;
+    blue = atan2;
+
+    return { red, green, blue };
+}
+
+function blackAndWhiteAtanhGreenAndRed(red, green, blue) {
+    let atan2 = Math.round(Math.atan2(green, red)) * maxColor;
+
+    red = atan2;
+    green = atan2;
+    blue = atan2;
+
+    return { red, green, blue };
+}
+
+function blackAndWhiteAtanhGreenAndBlue(red, green, blue) {
+    let atan2 = Math.round(Math.atan2(green, blue)) * maxColor;
+
+    red = atan2;
+    green = atan2;
+    blue = atan2;
+
+    return { red, green, blue };
+}
+
+function blackAndWhiteAtanhBlueAndRed(red, green, blue) {
+    let atan2 = Math.round(Math.atan2(blue, red)) * maxColor;
+
+    red = atan2;
+    green = atan2;
+    blue = atan2;
+
+    return { red, green, blue };
+}
+
+function blackAndWhiteAtanhBlueAndGreen(red, green, blue) {
+    let atan2 = Math.round(Math.atan2(blue, green)) * maxColor;
+
+    red = atan2;
+    green = atan2;
+    blue = atan2;
 
     return { red, green, blue };
 }
