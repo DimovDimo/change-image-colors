@@ -79,6 +79,8 @@ function selectFilters() {
         case "blackAndWhiteAtanhGreenAndBlue": change(blackAndWhiteAtanhGreenAndBlue); break;
         case "blackAndWhiteAtanhBlueAndRed": change(blackAndWhiteAtanhBlueAndRed); break;
         case "blackAndWhiteAtanhBlueAndGreen": change(blackAndWhiteAtanhBlueAndGreen); break;
+        case "multiplyWithCbrt": change(multiplyWithCbrt); break;
+        case "clz32": change(clz32); break;
         default: original();
     }
 }
@@ -686,6 +688,22 @@ function blackAndWhiteAtanhBlueAndGreen(red, green, blue) {
     red = atan2;
     green = atan2;
     blue = atan2;
+
+    return { red, green, blue };
+}
+
+function multiplyWithCbrt(red, green, blue) {
+    red = Math.round(Math.cbrt(red) * red) % (maxColor + 1);
+    green = Math.round(Math.cbrt(green) * green) % (maxColor + 1);
+    blue = Math.round(Math.cbrt(blue) * blue) % (maxColor + 1);
+
+    return { red, green, blue };
+}
+
+function clz32(red, green, blue) {
+    red = Math.clz32(red);
+    green = Math.clz32(green);
+    blue = Math.clz32(blue);
 
     return { red, green, blue };
 }
