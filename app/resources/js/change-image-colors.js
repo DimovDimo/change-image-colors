@@ -81,6 +81,7 @@ function selectFilters() {
         case "blackAndWhiteAtanhBlueAndGreen": change(blackAndWhiteAtanhBlueAndGreen); break;
         case "multiplyWithCbrt": change(multiplyWithCbrt); break;
         case "clz32": change(clz32); break;
+        case "multiplyWithCos": change(multiplyWithCos); break;
         default: original();
     }
 }
@@ -704,6 +705,14 @@ function clz32(red, green, blue) {
     red = Math.clz32(red);
     green = Math.clz32(green);
     blue = Math.clz32(blue);
+
+    return { red, green, blue };
+}
+
+function multiplyWithCos(red, green, blue) {
+    red = Math.round(((Math.cos(red) + 1) / 2) * maxColor) % (maxColor + 1);
+    green = Math.round(((Math.cos(green) + 1) / 2) * maxColor) % (maxColor + 1);
+    blue = Math.round(((Math.cos(blue) + 1) / 2) * maxColor) % (maxColor + 1);
 
     return { red, green, blue };
 }
