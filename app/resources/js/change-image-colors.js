@@ -82,6 +82,7 @@ function selectFilters() {
         case "multiplyWithCbrt": change(multiplyWithCbrt); break;
         case "clz32": change(clz32); break;
         case "multiplyWithCos": change(multiplyWithCos); break;
+        case "multiplyWithCosh": change(multiplyWithCosh); break;
         default: original();
     }
 }
@@ -713,6 +714,14 @@ function multiplyWithCos(red, green, blue) {
     red = Math.round(((Math.cos(red) + 1) / 2) * maxColor) % (maxColor + 1);
     green = Math.round(((Math.cos(green) + 1) / 2) * maxColor) % (maxColor + 1);
     blue = Math.round(((Math.cos(blue) + 1) / 2) * maxColor) % (maxColor + 1);
+
+    return { red, green, blue };
+}
+
+function multiplyWithCosh(red, green, blue) {
+    red = Math.round(Math.cosh(red) * maxColor) % (maxColor + 1);
+    green = Math.round(Math.cosh(green) * maxColor) % (maxColor + 1);
+    blue = Math.round(Math.cosh(blue) * maxColor) % (maxColor + 1);
 
     return { red, green, blue };
 }
