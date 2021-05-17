@@ -1,4 +1,5 @@
 const maxColor = 255; //TODO: input color
+//TODO: in range min-max color (between) => min + (color % ((max - min) + 1))
 
 let canvas = document.getElementById("canvas");
 let context = canvas.getContext("2d");
@@ -85,6 +86,8 @@ function selectFilters() {
         case "multiplyWithCosh": change(multiplyWithCosh); break;
         case "multiplyWithExp": change(multiplyWithExp); break;
         case "multiplyWithExpm1": change(multiplyWithExpm1); break;
+        case "grayscaleHypot": change(grayscaleHypot); break;
+        case "blackAndWhiteHypot": change(blackAndWhiteHypot); break;
         default: original();
     }
 }
@@ -740,6 +743,27 @@ function multiplyWithExpm1(red, green, blue) {
     red = Math.round(Math.expm1(red)) % (maxColor + 1);
     green = Math.round(Math.expm1(green)) % (maxColor + 1);
     blue = Math.round(Math.expm1(blue)) % (maxColor + 1);
+
+    return { red, green, blue };
+}
+
+function grayscaleHypot(red, green, blue) {
+    let hypot = Math.round(Math.hypot(red, green, blue)) % (maxColor + 1);
+    
+    red = hypot;
+    green = hypot;
+    blue = hypot;
+
+    return { red, green, blue };
+}
+
+function blackAndWhiteHypot(red, green, blue) {
+    let hypot = Math.round(Math.hypot(red, green, blue)) % (maxColor + 1);
+    let blackAndWhite = Math.round(hypot / maxColor) * maxColor;
+    
+    red = blackAndWhite;
+    green = blackAndWhite;
+    blue = blackAndWhite;
 
     return { red, green, blue };
 }
