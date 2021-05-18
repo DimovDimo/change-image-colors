@@ -88,6 +88,19 @@ function selectFilters() {
         case "multiplyWithExpm1": change(multiplyWithExpm1); break;
         case "grayscaleHypot": change(grayscaleHypot); break;
         case "blackAndWhiteHypot": change(blackAndWhiteHypot); break;
+        case "grayscaleImulRed": change(grayscaleImulRed); break;
+        case "grayscaleImulGreen": change(grayscaleImulGreen); break;
+        case "grayscaleImulBlue": change(grayscaleImulBlue); break;
+        case "grayscaleImulRedAndGreen": change(grayscaleImulRedAndGreen); break;
+        case "grayscaleImulRedAndBlue": change(grayscaleImulRedAndBlue); break;
+        case "grayscaleImulGreenAndBlue": change(grayscaleImulGreenAndBlue); break;
+        case "blackAndWhiteImulRed": change(blackAndWhiteImulRed); break;
+        case "blackAndWhiteImulGreen": change(blackAndWhiteImulGreen); break;
+        case "blackAndWhiteImulBlue": change(blackAndWhiteImulBlue); break;
+        case "blackAndWhiteImulRedAndGreen": change(blackAndWhiteImulRedAndGreen); break;
+        case "blackAndWhiteImulRedAndBlue": change(blackAndWhiteImulRedAndBlue); break;
+        case "blackAndWhiteImulGreenAndBlue": change(blackAndWhiteImulGreenAndBlue); break;
+        case "colorsImul": change(colorsImul); break;
         default: original();
     }
 }
@@ -764,6 +777,140 @@ function blackAndWhiteHypot(red, green, blue) {
     red = blackAndWhite;
     green = blackAndWhite;
     blue = blackAndWhite;
+
+    return { red, green, blue };
+}
+
+function grayscaleImulRed(red, green, blue) {
+    let imul = Math.imul(red, red) % (maxColor + 1);
+    
+    red = imul;
+    green = imul;
+    blue = imul;
+
+    return { red, green, blue };
+}
+
+function grayscaleImulGreen(red, green, blue) {
+    let imul = Math.imul(green, green) % (maxColor + 1);
+    
+    red = imul;
+    green = imul;
+    blue = imul;
+
+    return { red, green, blue };
+}
+
+function grayscaleImulBlue(red, green, blue) {
+    let imul = Math.imul(blue, blue) % (maxColor + 1);
+    
+    red = imul;
+    green = imul;
+    blue = imul;
+
+    return { red, green, blue };
+}
+
+function grayscaleImulRedAndGreen(red, green, blue) {
+    let imul = Math.imul(red, green) % (maxColor + 1);
+    
+    red = imul;
+    green = imul;
+    blue = imul;
+
+    return { red, green, blue };
+}
+
+function grayscaleImulRedAndBlue(red, green, blue) {
+    let imul = Math.imul(red, blue) % (maxColor + 1);
+    
+    red = imul;
+    green = imul;
+    blue = imul;
+
+    return { red, green, blue };
+}
+
+function grayscaleImulGreenAndBlue(red, green, blue) {
+    let imul = Math.imul(green, blue) % (maxColor + 1);
+    
+    red = imul;
+    green = imul;
+    blue = imul;
+
+    return { red, green, blue };
+}
+
+function blackAndWhiteImulRed(red, green, blue) {
+    let imul = Math.imul(red, red) % (maxColor + 1);
+    let blackAndWhite = Math.round(imul / maxColor) * maxColor;
+    
+    red = blackAndWhite;
+    green = blackAndWhite;
+    blue = blackAndWhite;
+
+    return { red, green, blue };
+}
+
+function blackAndWhiteImulGreen(red, green, blue) {
+    let imul = Math.imul(green, green) % (maxColor + 1);
+    let blackAndWhite = Math.round(imul / maxColor) * maxColor;
+    
+    red = blackAndWhite;
+    green = blackAndWhite;
+    blue = blackAndWhite;
+
+    return { red, green, blue };
+}
+
+function blackAndWhiteImulBlue(red, green, blue) {
+    let imul = Math.imul(blue, blue) % (maxColor + 1);
+    let blackAndWhite = Math.round(imul / maxColor) * maxColor;
+    
+    red = blackAndWhite;
+    green = blackAndWhite;
+    blue = blackAndWhite;
+
+    return { red, green, blue };
+}
+
+function blackAndWhiteImulRedAndGreen(red, green, blue) {
+    let imul = Math.imul(red, green) % (maxColor + 1);
+    let blackAndWhite = Math.round(imul / maxColor) * maxColor;
+    
+    red = blackAndWhite;
+    green = blackAndWhite;
+    blue = blackAndWhite;
+
+    return { red, green, blue };
+}
+
+function blackAndWhiteImulRedAndBlue(red, green, blue) {
+    let imul = Math.imul(red, blue) % (maxColor + 1);
+    let blackAndWhite = Math.round(imul / maxColor) * maxColor;
+    
+    red = blackAndWhite;
+    green = blackAndWhite;
+    blue = blackAndWhite;
+
+    return { red, green, blue };
+}
+
+function blackAndWhiteImulGreenAndBlue(red, green, blue) {
+    let imul = Math.imul(green, blue) % (maxColor + 1);
+    let blackAndWhite = Math.round(imul / maxColor) * maxColor;
+    
+    red = blackAndWhite;
+    green = blackAndWhite;
+    blue = blackAndWhite;
+
+    return { red, green, blue };
+}
+
+function colorsImul(red, green, blue) {    
+    red = Math.imul(red, red) % (maxColor + 1);
+    green = Math.imul(green, green) % (maxColor + 1);
+    blue = Math.imul(blue, blue) % (maxColor + 1);
 
     return { red, green, blue };
 }
