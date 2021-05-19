@@ -101,6 +101,7 @@ function selectFilters() {
         case "blackAndWhiteImulRedAndBlue": change(blackAndWhiteImulRedAndBlue); break;
         case "blackAndWhiteImulGreenAndBlue": change(blackAndWhiteImulGreenAndBlue); break;
         case "colorsImul": change(colorsImul); break;
+        case "multiplyWithNaturalLogarithmBaseEulerConstant": change(multiplyWithNaturalLogarithmBaseEulerConstant); break;
         default: original();
     }
 }
@@ -911,6 +912,14 @@ function colorsImul(red, green, blue) {
     red = Math.imul(red, red) % (maxColor + 1);
     green = Math.imul(green, green) % (maxColor + 1);
     blue = Math.imul(blue, blue) % (maxColor + 1);
+
+    return { red, green, blue };
+}
+
+function multiplyWithNaturalLogarithmBaseEulerConstant(red, green, blue) {    
+    red = Math.round(Math.log(red + 1)) % (maxColor + 1);
+    green = Math.round(Math.log(green + 1)) % (maxColor + 1);
+    blue = Math.round(Math.log(blue + 1)) % (maxColor + 1);
 
     return { red, green, blue };
 }
