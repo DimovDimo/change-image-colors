@@ -210,15 +210,15 @@ function grayscaleMax(red, green, blue) {
     return { red, green, blue };
 }
 
-function grayscaleMedium(red, green, blue) {
-    let medium = [red, green, blue].sort()[1];
+// function grayscaleMedium(red, green, blue) {
+//     let medium = [red, green, blue].sort()[1];
     
-    red = medium;
-    green = medium;
-    blue = medium;
+//     red = medium;
+//     green = medium;
+//     blue = medium;
 
-    return { red, green, blue };
-}
+//     return { red, green, blue };
+// }
 
 function grayscaleMin(red, green, blue) {
     let min = Math.min(red, green, blue);
@@ -277,16 +277,16 @@ function blackAndWhiteMax(red, green, blue) {
     return { red, green, blue };
 }
 
-function blackAndWhiteMedium(red, green, blue) {
-    let medium = [red, green, blue].sort()[1];
-    let blackAndWhite = Math.round(medium / maxColor) * maxColor;
+// function blackAndWhiteMedium(red, green, blue) {
+//     let medium = [red, green, blue].sort()[1];
+//     let blackAndWhite = Math.round(medium / maxColor) * maxColor;
     
-    red = blackAndWhite;
-    green = blackAndWhite;
-    blue = blackAndWhite;
+//     red = blackAndWhite;
+//     green = blackAndWhite;
+//     blue = blackAndWhite;
 
-    return { red, green, blue };
-}
+//     return { red, green, blue };
+// }
 
 function blackAndWhiteMin(red, green, blue) {
     let min = Math.min(red, green, blue);
@@ -481,69 +481,69 @@ function maximaAndMinima(red, green, blue) {
     return { red, green, blue };
 }
 
-function multiplyWithEulerConstant(red, green, blue) {
-    red = Math.round(red * Math.E) % (maxColor + 1);
-    green = Math.round(green * Math.E) % (maxColor + 1);
-    blue = Math.round(blue * Math.E) % (maxColor + 1);
+// function multiplyWithEulerConstant(red, green, blue) {
+//     red = Math.round(red * Math.E) % (maxColor + 1);
+//     green = Math.round(green * Math.E) % (maxColor + 1);
+//     blue = Math.round(blue * Math.E) % (maxColor + 1);
 
-    return { red, green, blue };
-}
+//     return { red, green, blue };
+// }
 
-function multiplyWithNaturalLogarithmOf2(red, green, blue) {
-    red = Math.round(red * Math.LN2) % (maxColor + 1);
-    green = Math.round(green * Math.LN2) % (maxColor + 1);
-    blue = Math.round(blue * Math.LN2) % (maxColor + 1);
+// function multiplyWithNaturalLogarithmOf2(red, green, blue) {
+//     red = Math.round(red * Math.LN2) % (maxColor + 1);
+//     green = Math.round(green * Math.LN2) % (maxColor + 1);
+//     blue = Math.round(blue * Math.LN2) % (maxColor + 1);
 
-    return { red, green, blue };
-}
+//     return { red, green, blue };
+// }
 
-function multiplyWithNaturalLogarithmOf10(red, green, blue) {
-    red = Math.round(red * Math.LN10) % (maxColor + 1);
-    green = Math.round(green * Math.LN10) % (maxColor + 1);
-    blue = Math.round(blue * Math.LN10) % (maxColor + 1);
+// function multiplyWithNaturalLogarithmOf10(red, green, blue) {
+//     red = Math.round(red * Math.LN10) % (maxColor + 1);
+//     green = Math.round(green * Math.LN10) % (maxColor + 1);
+//     blue = Math.round(blue * Math.LN10) % (maxColor + 1);
 
-    return { red, green, blue };
-}
+//     return { red, green, blue };
+// }
 
-function multiplyWithBase2LogarithmOfEulerConstant(red, green, blue) {
-    red = Math.round(red * Math.LOG2E) % (maxColor + 1);
-    green = Math.round(green * Math.LOG2E) % (maxColor + 1);
-    blue = Math.round(blue * Math.LOG2E) % (maxColor + 1);
+// function multiplyWithBase2LogarithmOfEulerConstant(red, green, blue) {
+//     red = Math.round(red * Math.LOG2E) % (maxColor + 1);
+//     green = Math.round(green * Math.LOG2E) % (maxColor + 1);
+//     blue = Math.round(blue * Math.LOG2E) % (maxColor + 1);
 
-    return { red, green, blue };
-}
+//     return { red, green, blue };
+// }
 
-function multiplyWithBase10LogarithmOfEulerConstant(red, green, blue) {
-    red = Math.round(red * Math.LOG10E) % (maxColor + 1);
-    green = Math.round(green * Math.LOG10E) % (maxColor + 1);
-    blue = Math.round(blue * Math.LOG10E) % (maxColor + 1);
+// function multiplyWithBase10LogarithmOfEulerConstant(red, green, blue) {
+//     red = Math.round(red * Math.LOG10E) % (maxColor + 1);
+//     green = Math.round(green * Math.LOG10E) % (maxColor + 1);
+//     blue = Math.round(blue * Math.LOG10E) % (maxColor + 1);
 
-    return { red, green, blue };
-}
+//     return { red, green, blue };
+// }
 
-function multiplyWithPi(red, green, blue) {
-    red = Math.round(red * Math.PI) % (maxColor + 1);
-    green = Math.round(green * Math.PI) % (maxColor + 1);
-    blue = Math.round(blue * Math.PI) % (maxColor + 1);
+// function multiplyWithPi(red, green, blue) {
+//     red = Math.round(red * Math.PI) % (maxColor + 1);
+//     green = Math.round(green * Math.PI) % (maxColor + 1);
+//     blue = Math.round(blue * Math.PI) % (maxColor + 1);
 
-    return { red, green, blue };
-}
+//     return { red, green, blue };
+// }
 
-function multiplyWithSquareRootOf1Over2(red, green, blue) {
-    red = Math.round(red * Math.SQRT1_2) % (maxColor + 1);
-    green = Math.round(green * Math.SQRT1_2) % (maxColor + 1);
-    blue = Math.round(blue * Math.SQRT1_2) % (maxColor + 1);
+// function multiplyWithSquareRootOf1Over2(red, green, blue) {
+//     red = Math.round(red * Math.SQRT1_2) % (maxColor + 1);
+//     green = Math.round(green * Math.SQRT1_2) % (maxColor + 1);
+//     blue = Math.round(blue * Math.SQRT1_2) % (maxColor + 1);
 
-    return { red, green, blue };
-}
+//     return { red, green, blue };
+// }
 
-function multiplyWithSquareRootOf2(red, green, blue) {
-    red = Math.round(red * Math.SQRT2) % (maxColor + 1);
-    green = Math.round(green * Math.SQRT2) % (maxColor + 1);
-    blue = Math.round(blue * Math.SQRT2) % (maxColor + 1);
+// function multiplyWithSquareRootOf2(red, green, blue) {
+//     red = Math.round(red * Math.SQRT2) % (maxColor + 1);
+//     green = Math.round(green * Math.SQRT2) % (maxColor + 1);
+//     blue = Math.round(blue * Math.SQRT2) % (maxColor + 1);
 
-    return { red, green, blue };
-}
+//     return { red, green, blue };
+// }
 
 function multiplyWithAcos(red, green, blue) {
     red = Math.round(Math.acos(red / maxColor) * maxColor) % (maxColor + 1);
@@ -553,13 +553,13 @@ function multiplyWithAcos(red, green, blue) {
     return { red, green, blue };
 }
 
-function multiplyWithAcosh(red, green, blue) {
-    red = Math.round(Math.acosh(red / maxColor) * maxColor) % (maxColor + 1);
-    green = Math.round(Math.acosh(green / maxColor) * maxColor) % (maxColor + 1);
-    blue = Math.round(Math.acosh(blue / maxColor) * maxColor) % (maxColor + 1);
+// function multiplyWithAcosh(red, green, blue) {
+//     red = Math.round(Math.acosh(red / maxColor) * maxColor) % (maxColor + 1);
+//     green = Math.round(Math.acosh(green / maxColor) * maxColor) % (maxColor + 1);
+//     blue = Math.round(Math.acosh(blue / maxColor) * maxColor) % (maxColor + 1);
 
-    return { red, green, blue };
-}
+//     return { red, green, blue };
+// }
 
 function multiplyWithAsin(red, green, blue) {
     red = Math.round(Math.asin(red / maxColor) * maxColor) % (maxColor + 1);
