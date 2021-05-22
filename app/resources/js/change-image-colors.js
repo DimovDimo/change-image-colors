@@ -125,8 +125,8 @@ function invert(red, green, blue) {
 
 function sepia(red, green, blue) {
     //TODO: input colors multipliers
-    red = Math.min(Math.round(0.3 * red + 0.7 * green + 0.2 * blue), maxColor);
-    green = Math.min(Math.round(0.3 * red + 0.5 * green + 0.2 * blue), maxColor);
+    red = Math.min(Math.round(0.4 * red + 0.8 * green + 0.2 * blue), maxColor);
+    green = Math.min(Math.round(0.4 * red + 0.7 * green + 0.2 * blue), maxColor);
     blue = Math.min(Math.round(0.3 * red + 0.5 * green + 0.1 * blue), maxColor);
 
     return { red, green, blue };
