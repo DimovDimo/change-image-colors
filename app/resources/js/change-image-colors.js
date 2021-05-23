@@ -18,7 +18,10 @@ filters.addEventListener("change", selectFilters);
 
 function selectFilters() {
     switch (filters.value) {
-        case "invert": change(invert); break; // TODO: invert => negative ?
+        case "invert": change(invert); break;
+        case "invertRed": change(invertRed); break;
+        case "invertGreen": change(invertGreen); break;
+        case "invertBlue": change(invertBlue); break;
         case "sepia": change(sepia); break;
         case "sepiaRandom": change(sepiaRandom); break;
         case "grayscaleAverage": change(grayscaleAverage); break;
@@ -89,39 +92,37 @@ function setColors(data, color, red, green, blue) {
     data[color + 2] = blue;
 }
 
-// TODO: checkbox => filterRed, filterGreen, filterBlue
-
 function invert(red, green, blue) {
-    red = maxColor - red;
-    green = maxColor - green;
-    blue = maxColor - blue;
+    red = calculateInvert(red);
+    green = calculateInvert(green);
+    blue = calculateInvert(blue);
 
     return { red, green, blue };
 }
 
-// function invertRed(red, green, blue) {
-//     red = maxColor - red;
-//     green = green;
-//     blue = blue;
+function invertRed(red, green, blue) {
+    red = calculateInvert(red);
+    green = green;
+    blue = blue;
 
-//     return { red, green, blue };
-// }
+    return { red, green, blue };
+}
 
-// function invertGreen(red, green, blue) {
-//     red = red;
-//     green = maxColor - green;
-//     blue = blue;
+function invertGreen(red, green, blue) {
+    red = red;
+    green = calculateInvert(green);
+    blue = blue;
 
-//     return { red, green, blue };
-// }
+    return { red, green, blue };
+}
 
-// function invertBlue(red, green, blue) {
-//     red = red;
-//     green = green;
-//     blue = maxColor - blue;
+function invertBlue(red, green, blue) {
+    red = red;
+    green = green;
+    blue = calculateInvert(blue);
 
-//     return { red, green, blue };
-// }
+    return { red, green, blue };
+}
 
 function sepia(red, green, blue) {
     //TODO: input colors multipliers
@@ -408,4 +409,8 @@ function maximaAndMinima(red, green, blue) {
     blue = Math.round(blue / maxColor) * maxColor;
 
     return { red, green, blue };
+}
+
+function calculateInvert(color) {
+    return maxColor - color;
 }
