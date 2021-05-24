@@ -23,6 +23,9 @@ function selectFilters() {
         case "invertGreen": change(invertGreen); break;
         case "invertBlue": change(invertBlue); break;
         case "sepia": change(sepia); break;
+        case "sepiaRed": change(sepiaRed); break;
+        case "sepiaGreen": change(sepiaGreen); break;
+        case "sepiaBlue": change(sepiaBlue); break;
         case "sepiaRandom": change(sepiaRandom); break;
         case "grayscaleAverage": change(grayscaleAverage); break;
         case "grayscaleMax": change(grayscaleMax); break;
@@ -125,18 +128,41 @@ function invertBlue(red, green, blue) {
 }
 
 function sepia(red, green, blue) {
-    //TODO: input colors multipliers
-    red = Math.min(Math.round(0.4 * red + 0.8 * green + 0.2 * blue), maxColor);
-    green = Math.min(Math.round(0.4 * red + 0.7 * green + 0.2 * blue), maxColor);
-    blue = Math.min(Math.round(0.3 * red + 0.5 * green + 0.1 * blue), maxColor);
+    red = calculateSepia(0.4, red, 0.8, green, 0.2, blue);
+    green = calculateSepia(0.4, red, 0.7, green, 0.2, blue);
+    blue = calculateSepia(0.3, red, 0.5, green, 0.1, blue);
+
+    return { red, green, blue };
+}
+
+function sepiaRed(red, green, blue) {
+    red = calculateSepia(0.4, red, 0.8, green, 0.2, blue);
+    green = green;
+    blue = blue;
+
+    return { red, green, blue };
+}
+
+function sepiaGreen(red, green, blue) {
+    red = red;
+    green = calculateSepia(0.4, red, 0.7, green, 0.2, blue);
+    blue = blue;
+
+    return { red, green, blue };
+}
+
+function sepiaBlue(red, green, blue) {
+    red = red;
+    green = green;
+    blue = calculateSepia(0.3, red, 0.5, green, 0.1, blue);
 
     return { red, green, blue };
 }
 
 function sepiaRandom(red, green, blue) {
-    red = Math.min(Math.round(Math.random() * red + Math.random() * green + Math.random() * blue), maxColor);
-    green = Math.min(Math.round(Math.random() * red + Math.random() * green + Math.random() * blue), maxColor);
-    blue = Math.min(Math.round(Math.random() * red + Math.random() * green + Math.random() * blue), maxColor);
+    red = calculateSepia(Math.random(), red, Math.random(), green, Math.random(), blue);
+    green = calculateSepia(Math.random(), red, Math.random(), green, Math.random(), blue);
+    blue = calculateSepia(Math.random(), red, Math.random(), green, Math.random(), blue);
 
     return { red, green, blue };
 }
@@ -413,4 +439,8 @@ function maximaAndMinima(red, green, blue) {
 
 function calculateInvert(color) {
     return maxColor - color;
+}
+
+function calculateSepia(multiplierRed, red, multiplierGreen, green, multiplierBlue, blue) {
+    return Math.min(Math.round(multiplierRed * red + multiplierGreen * green + multiplierBlue * blue), maxColor);
 }
