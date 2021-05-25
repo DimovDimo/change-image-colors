@@ -58,6 +58,9 @@ function selectFilters() {
         case "noiseUp": change(noiseUp); break;
         case "noiseDown": change(noiseDown); break;
         case "maximaAndMinima": change(maximaAndMinima); break;
+        case "maximaAndMinimaRed": change(maximaAndMinimaRed); break;
+        case "maximaAndMinimaGreen": change(maximaAndMinimaGreen); break;
+        case "maximaAndMinimaBlue": change(maximaAndMinimaBlue); break;
         default: original();
     }
 }
@@ -430,9 +433,33 @@ function noiseDown(red, green, blue) {
 }
 
 function maximaAndMinima(red, green, blue) {
-    red = Math.round(red / maxColor) * maxColor;
-    green = Math.round(green / maxColor) * maxColor;
-    blue = Math.round(blue / maxColor) * maxColor;
+    red = calculateMaximaAndMinima(red);
+    green = calculateMaximaAndMinima(green);
+    blue = calculateMaximaAndMinima(blue);
+
+    return { red, green, blue };
+}
+
+function maximaAndMinimaRed(red, green, blue) {
+    red = calculateMaximaAndMinima(red);
+    green = green;
+    blue = blue;
+
+    return { red, green, blue };
+}
+
+function maximaAndMinimaGreen(red, green, blue) {
+    red = red;
+    green = calculateMaximaAndMinima(green);
+    blue = blue;
+
+    return { red, green, blue };
+}
+
+function maximaAndMinimaBlue(red, green, blue) {
+    red = red;
+    green = green;
+    blue = calculateMaximaAndMinima(blue);
 
     return { red, green, blue };
 }
@@ -443,4 +470,8 @@ function calculateInvert(color) {
 
 function calculateSepia(multiplierRed, red, multiplierGreen, green, multiplierBlue, blue) {
     return Math.min(Math.round(multiplierRed * red + multiplierGreen * green + multiplierBlue * blue), maxColor);
+}
+
+function calculateMaximaAndMinima(color) {
+    return Math.round(color / maxColor) * maxColor;
 }
