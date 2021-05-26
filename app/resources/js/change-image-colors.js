@@ -27,6 +27,9 @@ function selectFilters() {
         case "sepiaGreen": change(sepiaGreen); break;
         case "sepiaBlue": change(sepiaBlue); break;
         case "sepiaRandom": change(sepiaRandom); break;
+        case "averageRed": change(averageRed); break;
+        case "averageGreen": change(averageGreen); break;
+        case "averageBlue": change(averageBlue); break;
         case "grayscaleAverage": change(grayscaleAverage); break;
         case "grayscaleMax": change(grayscaleMax); break;
         case "grayscaleMin": change(grayscaleMin); break;
@@ -170,8 +173,32 @@ function sepiaRandom(red, green, blue) {
     return { red, green, blue };
 }
 
+function averageRed(red, green, blue) {
+    red = calculateAverage(red, green, blue);
+    green = green;
+    blue = blue;
+
+    return { red, green, blue };
+}
+
+function averageGreen(red, green, blue) {
+    red = red;
+    green = calculateAverage(red, green, blue);
+    blue = blue;
+
+    return { red, green, blue };
+}
+
+function averageBlue(red, green, blue) {
+    red = red;
+    green = green;
+    blue = calculateAverage(red, green, blue);
+
+    return { red, green, blue };
+}
+
 function grayscaleAverage(red, green, blue) {
-    let average = (red + green + blue) / 3;
+    let average = calculateAverage(red, green, blue);
     
     red = average;
     green = average;
@@ -470,6 +497,10 @@ function calculateInvert(color) {
 
 function calculateSepia(multiplierRed, red, multiplierGreen, green, multiplierBlue, blue) {
     return Math.min(Math.round(multiplierRed * red + multiplierGreen * green + multiplierBlue * blue), maxColor);
+}
+
+function calculateAverage(red, green, blue) {
+    return (red + green + blue) / 3;
 }
 
 function calculateMaximaAndMinima(color) {
