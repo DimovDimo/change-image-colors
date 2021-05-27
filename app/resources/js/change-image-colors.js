@@ -30,6 +30,12 @@ function selectFilters() {
         case "averageRed": change(averageRed); break;
         case "averageGreen": change(averageGreen); break;
         case "averageBlue": change(averageBlue); break;
+        case "maxRed": change(maxRed); break;
+        case "maxGreen": change(maxGreen); break;
+        case "maxBlue": change(maxBlue); break;
+        case "minRed": change(minRed); break;
+        case "minGreen": change(minGreen); break;
+        case "minBlue": change(minBlue); break;
         case "grayscaleAverage": change(grayscaleAverage); break;
         case "grayscaleMax": change(grayscaleMax); break;
         case "grayscaleMin": change(grayscaleMin); break;
@@ -193,6 +199,54 @@ function averageBlue(red, green, blue) {
     red = red;
     green = green;
     blue = calculateAverage(red, green, blue);
+
+    return { red, green, blue };
+}
+
+function maxRed(red, green, blue) {
+    red = Math.max(red, green, blue);
+    green = green;
+    blue = blue;
+
+    return { red, green, blue };
+}
+
+function maxGreen(red, green, blue) {
+    red = red;
+    green = Math.max(red, green, blue);
+    blue = blue;
+
+    return { red, green, blue };
+}
+
+function maxBlue(red, green, blue) {
+    red = red;
+    green = green;
+    blue = Math.max(red, green, blue);
+
+    return { red, green, blue };
+}
+
+function minRed(red, green, blue) {
+    red = Math.min(red, green, blue);
+    green = green;
+    blue = blue;
+
+    return { red, green, blue };
+}
+
+function minGreen(red, green, blue) {
+    red = red;
+    green = Math.min(red, green, blue);
+    blue = blue;
+
+    return { red, green, blue };
+}
+
+function minBlue(red, green, blue) {
+    red = red;
+    green = green;
+    blue = Math.min(red, green, blue);
 
     return { red, green, blue };
 }
