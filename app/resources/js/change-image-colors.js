@@ -305,10 +305,9 @@ function grayscaleBlue(red, green, blue) {
     return { red, green, blue };
 }
 
-// TODO: blackAndWhite > minAndMax
 function blackAndWhiteAverage(red, green, blue) {
     let average = (red + green + blue) / 3;
-    let blackAndWhite = Math.round(average / maxColor) * maxColor;
+    let blackAndWhite = calculateMaximaAndMinima(average);
     
     red = blackAndWhite;
     green = blackAndWhite;
@@ -319,7 +318,7 @@ function blackAndWhiteAverage(red, green, blue) {
 
 function blackAndWhiteMax(red, green, blue) {
     let max = Math.max(red, green, blue);
-    let blackAndWhite = Math.round(max / maxColor) * maxColor;
+    let blackAndWhite = calculateMaximaAndMinima(max);
     
     red = blackAndWhite;
     green = blackAndWhite;
@@ -330,7 +329,7 @@ function blackAndWhiteMax(red, green, blue) {
 
 function blackAndWhiteMin(red, green, blue) {
     let min = Math.min(red, green, blue);
-    let blackAndWhite = Math.round(min / maxColor) * maxColor;
+    let blackAndWhite = calculateMaximaAndMinima(min);
     
     red = blackAndWhite;
     green = blackAndWhite;
@@ -340,7 +339,7 @@ function blackAndWhiteMin(red, green, blue) {
 }
 
 function blackAndWhiteRed(red, green, blue) {
-    let blackAndWhite = Math.round(red / maxColor) * maxColor;
+    let blackAndWhite = calculateMaximaAndMinima(red);
 
     red = blackAndWhite;
     green = blackAndWhite;
@@ -350,7 +349,7 @@ function blackAndWhiteRed(red, green, blue) {
 }
 
 function blackAndWhiteGreen(red, green, blue) {
-    let blackAndWhite = Math.round(green / maxColor) * maxColor;
+    let blackAndWhite = calculateMaximaAndMinima(green);
 
     red = blackAndWhite;
     green = blackAndWhite;
@@ -360,7 +359,7 @@ function blackAndWhiteGreen(red, green, blue) {
 }
 
 function blackAndWhiteBlue(red, green, blue) {
-    let blackAndWhite = Math.round(blue / maxColor) * maxColor;
+    let blackAndWhite = calculateMaximaAndMinima(blue);
 
     red = blackAndWhite;
     green = blackAndWhite;
