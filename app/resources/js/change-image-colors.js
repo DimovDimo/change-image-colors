@@ -7,10 +7,33 @@ let image = new Image();
 image.crossOrigin = "anonymous";
 let imagePath = "resources/images/flower-field-spectrum.jpg";
 image.src = imagePath;
+image.onload = function () { drawImage(); };
 
-image.onload = function () {
+let uploadImage = document.getElementById("upload-image");
+uploadImage.addEventListener("change", upload());
+
+function upload() {
+    return function (event) {
+        let file = event.target.files[0];
+        let fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
+        fileReader.onloadend = function (imageEvent) { readImage(imageEvent); };
+    };
+}
+
+function readImage(imageEvent) {
+    image.src = imageEvent.target.result;
+    image.onload = function () { drawImage(); };
+}
+
+function drawImage() {
+    let canvas = document.getElementById("canvas");
+    canvas.width = image.width;
+    canvas.height = image.height;
+
+    let context = canvas.getContext("2d");
     context.drawImage(image, 0, 0);
-};
+}
 
 let filters = document.getElementById("select-filters");
 filters.addEventListener("change", selectFilters);
@@ -82,16 +105,12 @@ function selectFilters() {
         case "blackAndWhiteGreen": change(blackAndWhiteGreen); break;
         case "blackAndWhiteBlue": change(blackAndWhiteBlue); break;
 
-        default: original();
+        default: drawImage();
     }
 }
 
-function original() {
-    context.drawImage(image, 0, 0);
-}
-
 function change(filter) {
-    original();
+    drawImage();
 
     let imageData = context.getImageData(0, 0, canvas.width, canvas.height);
     let data = imageData.data;
