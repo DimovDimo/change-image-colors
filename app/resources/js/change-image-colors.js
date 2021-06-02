@@ -1,12 +1,12 @@
+const exampleImageSrc = "resources/images/flower-field-spectrum.jpg";
 const maxColor = 255;
 
 let canvas = document.getElementById("canvas");
 let context = canvas.getContext("2d");
 
 let image = new Image();
-image.crossOrigin = "anonymous";
-let imagePath = "resources/images/flower-field-spectrum.jpg";
-image.src = imagePath;
+image.crossOrigin = "Anonymous";
+image.src = exampleImageSrc;
 image.onload = function () { drawImage(); };
 
 let uploadImage = document.getElementById("upload-image");
