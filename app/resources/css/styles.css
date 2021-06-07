@@ -10,7 +10,16 @@ h1 {
 }
 
 #upload-image::file-selector-button {
-	/* TODO */
+	border: 2px solid blue;
+	color: white;
+	padding: 5px 10px 5px 10px;
+	border-radius: 5px;
+	background-color: blue;
+}
+
+#upload-image::file-selector-button:hover {
+	border: 2px solid #1034A6;
+	background-color: #1034A6;
 }
 
 small {
