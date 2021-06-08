@@ -2,6 +2,7 @@ body {
     background: #f8f8f8;
     color: black;
     text-align: center;
+    justify-content: center;
 }
 
 h1 {
@@ -9,17 +10,23 @@ h1 {
     padding: 6px;
 }
 
-#upload-image::file-selector-button {
-	border: 2px solid blue;
+#upload-image::file-selector-button {	
 	color: white;
-	padding: 5px 10px 5px 10px;
-	border-radius: 5px;
-	background-color: blue;
+    background-color: blue;
+    border: 2px solid blue;
+    border-radius: 5px;
+	padding: 5px 10px 5px 10px;	
+	
 }
 
 #upload-image::file-selector-button:hover {
-	border: 2px solid #1034A6;
 	background-color: #1034A6;
+    border: 2px solid #1034A6;
+}
+
+#select-filters, #download-group {
+    margin: auto;
+    width: 300px;
 }
 
 small {
